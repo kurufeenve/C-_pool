@@ -27,9 +27,11 @@ int		main(void)
 		std::cout << "Type your command: ";
 		std::cin >> command;
 		if (i >= 8)
-			std::cout << "Oh, Sir, it seems that the phonebook is full. You can\
+		{
+			std::cout << "Oh, Sir, it seems that the phonebook is full. You can \
 cry in the corner now." << std::endl;
-		if (!command.compare("ADD"))
+		}
+		if (!command.compare("ADD") && i < 8)
 		{
 			user[i].addNewUser();
 			std::cout << std::endl << "New User added." << std::endl << std::endl; 
@@ -52,6 +54,8 @@ cry in the corner now." << std::endl;
 			if (j >= 0 && j < i)
 				user[j].showUser();
 		}
+		if (std::cin.eof() == 1)
+			break ;
 	}
 	return (0);
 }
