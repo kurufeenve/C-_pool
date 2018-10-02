@@ -24,7 +24,7 @@ void	ponyOnTheHeap()
 {
 	Pony	*pony = new Pony();
 	print << nl;
-	delete (pony);
+	delete(pony);
 }
 
 int		main(void)

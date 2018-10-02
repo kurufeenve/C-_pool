@@ -12,7 +12,7 @@
 
 #include "Pony.hpp"
 
-Pony::Pony(void)// : name("Fluttershy"), legs(4), color(0xFFFFE0), unicorne(false), dead(false)
+Pony::Pony(void)
 {
 	this->name = "Fluttershy";
 	this->legs = 4;
