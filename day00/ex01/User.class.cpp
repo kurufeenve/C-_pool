@@ -56,7 +56,7 @@ void		User::addNewUser(void)
 
 void		User::showUser(void)
 {
-	std::cout << "First Name: " << this->_firstName << std::endl
+	std::cout << "First Name: " << this->_firstName << "\n"
 	<< "Last Name: " << this->_lastName << std::endl
 	<< "Nickname: " << this->_nickName << std::endl
 	<< "Login: " << this->_login << std::endl
