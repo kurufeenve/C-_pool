@@ -17,9 +17,6 @@
 # include <string> // just in case of deleting string from iostream
 # include "Zombie.hpp"
 
-# define print std::cout
-# define nl std::endl
-
 class	ZombieEvent
 {
 	public:
