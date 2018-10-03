@@ -4,7 +4,7 @@ Logger::Logger(std::string name) : Name(name){}
 
 void		Logger::logToConsole(std::string msg)
 {
-	std::cout << msg << std::endl;
+	std::cout << this->makeLogEntry(msg) << std::endl;
 }
 
 void		Logger::logToFile(std::string msg)
@@ -12,7 +12,7 @@ void		Logger::logToFile(std::string msg)
 	std::ofstream LogFile;
 	
 	LogFile.open(this->Name, std::ofstream::out | std::ofstream::app);
-	LogFile << msg;
+	LogFile << this->makeLogEntry(msg) << std::endl;
 	LogFile.close();
 }
 
@@ -21,12 +21,14 @@ std::string	Logger::makeLogEntry(std::string msg)
 	time_t		tt;
 	std::string	res;
 	std::string	two_dot;
+	std::string	end_log;
 
 	std::chrono::system_clock::time_point today = std::chrono::system_clock::now();
 	tt = std::chrono::system_clock::to_time_t(today);
 	res = "log: ";
-	two_dot = ": ";
-	res += ctime(&tt) + two_dot + msg;
+	end_log = "<<END LOG\n";
+	res += ctime(&tt) + msg + end_log;
+	return res;
 }
 
 void		Logger::log(std::string const & dest, std::string const & message)
@@ -36,7 +38,7 @@ void		Logger::log(std::string const & dest, std::string const & message)
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (i % 2 == 0)
-			
+		if (dest.compare(command[i]) == 0)
+			(this->*logg[i % 2])(message);
 	}
 }
