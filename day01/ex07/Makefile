@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
-SRC  = main.cpp User.class.cpp
-INCL = PhoneBook.class.hpp
+NAME = SED
+SRC  = main.cpp Sed.class.cpp
+INCL = Sed.class.hpp
 OBJ  = $(SRC:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror
 CL  = clang++
