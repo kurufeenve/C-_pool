@@ -4,8 +4,12 @@
 
 int		main(void)
 {
-	Human	human;
+	Human		human;
+	std::string	actions[] = {"melee", "range", "intimidating shout"};
 
-	human.action("melee", "Bob");
+	for (int i = 0; i < 3; i++)
+	{
+		human.action(actions[i], "Bob");
+	}
 	return (0);
 }
