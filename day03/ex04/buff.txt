@@ -1,0 +1,4 @@
+_hitPoints(100), _maxHitPoints(100), _energyPoints(100),
+_maxEnergypoints(100), _level(1), _name(name), _meleeAttackDamage(30), _rangeAttackDamage(20),
+_bottleAttackDamage(6), _kneeToBallsAttackDamage(50), _swearAttackDamage(100),
+_headToHeadAttackDamage(15), _rageOfGandiAttackDamage(2147483647), _armorDamageReduction(5)
