@@ -1,18 +1,20 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _hitPoints(100), _maxHitPoints(100), _energyPoints(50), _maxEnergypoints(50),
-_level(1), _name("FR4G-TP ClapTrap robot"), _meleeAttackDamage(20), _rangeAttackDamage(15),
+ClapTrap::ClapTrap() : _hitPoints(100), _maxHitPoints(100), _energyPoints(50),
+_maxEnergypoints(50), _level(1), _name("ClapTrap"), _meleeAttackDamage(20), _rangeAttackDamage(15),
 _armorDamageReduction(3)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _hitPoints(100), _maxHitPoints(100), _energyPoints(50),
-_maxEnergypoints(50), _level(1), _name(name), _meleeAttackDamage(20), _rangeAttackDamage(15),
-_armorDamageReduction(3)
+ClapTrap::ClapTrap(int _hitPoints, int _maxHitPoints, int _energyPoints, int _maxEnergypoints,
+int _level, std::string _name, int _meleeAttackDamage, int _rangeAttackDamage, int _armorDamageReduction) :
+_hitPoints(_hitPoints), _maxHitPoints(_maxHitPoints), _energyPoints(_energyPoints),
+_maxEnergypoints(_maxEnergypoints), _level(_level), _name(_name), _meleeAttackDamage(_meleeAttackDamage),
+_rangeAttackDamage(_rangeAttackDamage), _armorDamageReduction(_armorDamageReduction)
 {
-	std::cout << "ClapTrap string constructor called" << std::endl;
+	std::cout << "ClapTrap parametric constructor called" << std::endl;
 	return ;
 }
 
@@ -90,54 +92,59 @@ int			ClapTrap::getArmorDamageReduction() const
 	return this->_armorDamageReduction;
 }
 
-void		ClapTrap::set(int )
+int			ClapTrap::getTrueDmg() const
 {
-	this->_;
+	return this->_trueDmg;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setHitPoints(int hp)
 {
-	this->_;
+	this->_hitPoints = hp;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setMaxHitPoints(int mhp)
 {
-	this->_;
+	this->_maxHitPoints = mhp;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setEnergyPoints(int ep)
 {
-	this->_;
+	this->_energyPoints = ep;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setMaxEnergypoints(int mep)
 {
-	this->_;
+	this->_maxEnergypoints = mep;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setLevel(int lvl)
 {
-	this->_;
+	this->_level = lvl;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setName(std::string name)
 {
-	this->_;
+	this->_name = name;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setMeleeAttackDamage(int amount)
 {
-	this->_;
+	this->_meleeAttackDamage = amount;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setRangeAttackDamage(int amount)
 {
-	this->_;
+	this->_rangeAttackDamage = amount;
 }
 
-void		ClapTrap::set(int )
+void		ClapTrap::setArmorDamageReduction(int amount)
 {
-	this->_;
+	this->_armorDamageReduction = amount;
+}
+
+void		ClapTrap::setTrueDmg(int amount)
+{
+	this->_trueDmg = amount;
 }
 
 void		ClapTrap::meleeAttack(std::string const &target)
@@ -146,7 +153,7 @@ void		ClapTrap::meleeAttack(std::string const &target)
 	tgt = target;
 	if (target.length() == 0)
 		tgt = "Unnown Enemy";
-	std::cout << "ClapTrap '" + this->_name + "' attacks '" + tgt + "' causing " <<
+	std::cout << "'" + this->_name + "' attacks '" + tgt + "' causing " <<
 	this->_meleeAttackDamage << " points of damage!\n" << std::endl;
 }
 
@@ -156,7 +163,7 @@ void		ClapTrap::rangedAttack(std::string const &target)
 	tgt = target;
 	if (target.length() == 0)
 		tgt = "Unnown Enemy";
-	std::cout << "ClapTrap '" + this->_name + "' attacks '" + tgt + "' at range, causing " <<
+	std::cout << "'" + this->_name + "' attacks '" + tgt + "' at range, causing " <<
 	this->_rangeAttackDamage << " points of damage!\n" << std::endl;
 }
 
@@ -180,7 +187,7 @@ void		ClapTrap::takeDamage(unsigned int amount)
 
 void		ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "ClapTrap '" << this->_name + "' was repaired for " << amount << " points.\n" << std::endl;
+	std::cout << "'" + this->_name + "' was repaired for " << amount << " points.\n" << std::endl;
 	if ((this->_hitPoints = this->_hitPoints + amount) > this->_maxHitPoints)
 		this->_hitPoints = this->_maxHitPoints;
 	std::cout << "I am ready to go!\n" << std::endl;

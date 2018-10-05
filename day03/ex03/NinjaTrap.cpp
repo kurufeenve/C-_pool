@@ -1,137 +1,87 @@
-#include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
-ScavTrap::ScavTrap() : _hitPoints(60), _maxHitPoints(60), _energyPoints(120), _maxEnergypoints(120),
-_level(1), _name("FR4G-TP assault robot"), _meleeAttackDamage(60), _rangeAttackDamage(5),
-_armorDamageReduction(0)
+NinjaTrap::NinjaTrap() : ClapTrap( 100, 100, 50, 50, 1, "FR4G-TP NinjaTrap robot", 20, 15, 3 )
 {
-	std::cout << "ScavTrap default constructor called" << std::endl;
+	std::cout << "NinjaTrap default constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) : _hitPoints(60), _maxHitPoints(60), _energyPoints(120), _maxEnergypoints(120),
-_level(1), _name(name), _meleeAttackDamage(60), _rangeAttackDamage(5),
-_armorDamageReduction(0)
+NinjaTrap::NinjaTrap(std::string name) : ClapTrap( 100, 100, 50, 50, 1, name, 20, 15, 3 )
 {
-	std::cout << "ScavTrap string constructor called" << std::endl;
+	std::cout << "NinjaTrap string constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &f2)
+NinjaTrap::NinjaTrap(const NinjaTrap &f2)
 {
 	*this = f2;
-	std::cout << "ScavTrap copy constructor called" << std::endl;
+	std::cout << "NinjaTrap copy constructor called" << std::endl;
 }
 
-ScavTrap::~ScavTrap()
+NinjaTrap::~NinjaTrap()
 {
-	std::cout << "ScavTrap destructor called" << std::endl;
+	std::cout << "NinjaTrap destructor called" << std::endl;
 }
 
-ScavTrap &ScavTrap::operator= (const ScavTrap &frag)
+NinjaTrap &NinjaTrap::operator= (const NinjaTrap &frag)
 {
 	if (this != &frag)
 	{
-		this->_hitPoints = frag.getHitPoints();
-		this->_maxHitPoints = frag.getMaxHitPoints();
-		this->_energyPoints = frag.getEnergyPoints();
-		this->_maxEnergypoints = frag.getMaxEnergypoints();
-		this->_level = frag.getLevel();
-		this->_name = frag.getName();
-		this->_meleeAttackDamage = frag.getMeleeAttackDamage();
-		this->_rangeAttackDamage = frag.getRangeAttackDamage();
-		this->_armorDamageReduction = frag.getArmorDamageReduction();
+		this->setHitPoints(frag.getHitPoints());
+		this->setMaxHitPoints(frag.getMaxHitPoints());
+		this->setEnergyPoints(frag.getEnergyPoints());
+		this->setMaxEnergypoints(frag.getMaxEnergypoints());
+		this->setLevel(frag.getLevel());
+		this->setName(frag.getName());
+		this->setMeleeAttackDamage(frag.getMeleeAttackDamage());
+		this->setRangeAttackDamage(frag.getRangeAttackDamage());
+		this->setArmorDamageReduction(frag.getArmorDamageReduction());
 	}
-	std::cout << "ScavTrap copied" << std::endl;
+	std::cout << "NinjaTrap copied" << std::endl;
 	return *this;
 }
 
-int			ScavTrap::getHitPoints() const
+void	NinjaTrap::ninjaShoebox(ClapTrap &target) const
 {
-	return this->_hitPoints;
+	std::cout << "Hey! '" << target.getName() << "' Dean, to the physics department. 'Why do I always\n\
+have to give you guys so much money,\n\
+for laboratories and expensive equipment and stuff. Why couldn't you be like the math department\n\
+- all they need is money for pencils, paper and waste-paper baskets. Or even better, like the philosophy\n\
+department. All they need are pencils and paper.'\n" << std::endl;
 }
 
-int			ScavTrap::getMaxHitPoints() const
+void	NinjaTrap::ninjaShoebox(FragTrap &target) const
 {
-	return this->_maxHitPoints;
+	std::cout << "Hey! '" << target.getName() << "' A family was visiting an Indian reservation\n\
+when they happen upon an old tribesman laying\n\
+face down in the middle of the road with his ear pressed firmly against the blacktop. The father of the\n\
+family asked the old tribesman what he was doing. The tribesman began to speak... 'woman, late thirties,\n\
+three kids, one barking dog in late model, Four door station wagon, traveling at 65 m.p.h.'\n\
+'That's amazing' exclaimed the father. 'You can tell all of that by just listening to the ground'?\n\
+'No', said the old tribesman. 'They just ran over me five minutes ago!'\n" << std::endl;
 }
 
-int			ScavTrap::getEnergyPoints() const
+void	NinjaTrap::ninjaShoebox(ScavTrap &target) const
 {
-	return this->_energyPoints;
+	std::cout << "Hey! '" << target.getName() << "' A bus stops and two\n\
+Italian men get on. They seat themselves and engage in animated\n\
+conversation. The lady sitting behind them ignores their conversation at first, but her attention is\n\
+galvanized when she hears one of the men say the following: 'Emma come first. Den I come. Den two asses\n\
+come together. I come once-a-more. Two asses, they come together again. I come again and pee twice. Den I\n\
+come one lasta time.' 'You foul-mouthed swine,' retorted the lady indignantly. 'In this country we don\'t\n\
+talk about our sex lives in public!' 'Hey, coola down lady,' said the man. 'Who talking abouta sexa?\n\
+Imma justa tellun my frienda how to spella 'Mississippi'!\n" << std::endl;
 }
 
-int			ScavTrap::getMaxEnergypoints() const
+void	NinjaTrap::ninjaShoebox(NinjaTrap &target) const
 {
-	return this->_maxEnergypoints;
-}
-
-int			ScavTrap::getLevel() const
-{
-	return this->_level;
-}
-
-std::string	ScavTrap::getName() const
-{
-	return this->_name;
-}
-
-int			ScavTrap::getMeleeAttackDamage() const
-{
-	return this->_meleeAttackDamage;
-}
-
-int			ScavTrap::getRangeAttackDamage() const
-{
-	return this->_rangeAttackDamage;
-}
-
-int			ScavTrap::getArmorDamageReduction() const
-{
-	return this->_armorDamageReduction;
-}
-
-void		ScavTrap::meleeAttack(std::string const &target)
-{
-	std::string	tgt;
-	tgt = target;
-	if (target.length() == 0)
-		tgt = "Unnown Enemy";
-	std::cout << "ScavTrap '" + this->_name + "' attacks '" + tgt + "' causing " <<
-	this->_meleeAttackDamage << " points of damage!\n" << std::endl;
-}
-
-void		ScavTrap::rangedAttack(std::string const &target)
-{
-	std::string	tgt;
-	tgt = target;
-	if (target.length() == 0)
-		tgt = "Unnown Enemy";
-	std::cout << "ScavTrap '" + this->_name + "' attacks '" + tgt + "' at range, causing " <<
-	this->_rangeAttackDamage << " points of damage!\n" << std::endl;
-}
-
-void		ScavTrap::takeDamage(unsigned int amount)
-{
-	if ((int)amount < this->_armorDamageReduction)
-		this->_trueDmg = 0;
-	else
-	{
-		this->_trueDmg = amount - this->_armorDamageReduction;
-		std::cout << "'" + this->_name + "' was damaged by " << this->_trueDmg << " points.\n" << std::endl;
-	}
-	if (this->_hitPoints < this->_trueDmg)
-	{
-		std::cout << "'" + this->_name + "' is not functioning! repairs needed!\n" << std::endl;
-		this->_hitPoints = 0;
-	}
-	else
-		this->_hitPoints -= this->_trueDmg;
-}
-
-void		ScavTrap::beRepaired(unsigned int amount)
-{
-	std::cout << "ScavTrap '" << this->_name + "' was repaired for " << amount << " points.\n" << std::endl;
-	if ((this->_hitPoints = this->_hitPoints + amount) > this->_maxHitPoints)
-		this->_hitPoints = this->_maxHitPoints;
-	std::cout << "I am ready to go!\n" << std::endl;
+	std::cout << "Hey! '" << target.getName() << "' A vampire bat came flapping in\n\
+for the night covered in fresh blood and parked himself\n\
+on the ceiling of the cave to get some sleep. Pretty soon all the other bats smelled the blood and started\n\
+hassling him about where he got it. He told them to piss off and let him get some sleep, but they persisted\n\
+until he finally gave in. 'Okay, follow me' he said and flapped out of the cave with hundreds of bats behind\n\
+him. Down through a valley they went, across a river and into a forest of trees. Finally he slowed down and\n\
+all the other bats excitedly milled around him. 'Now, do you see that giant oak over there?' he asked.\n\
+'YES, YES, YES' all the other bats SCREAMED in a frenzy.\n\
+'Good' said the first bat, 'because I fuckin didn\'t!'\n" << std::endl;
 }

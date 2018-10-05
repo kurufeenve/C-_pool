@@ -2,8 +2,9 @@
 # define NINJATRAP_HPP
 
 # include <iostream>
-# include <sys/time.h>
 # include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
 
 class	NinjaTrap : public ClapTrap
 {
@@ -14,21 +15,10 @@ class	NinjaTrap : public ClapTrap
 		NinjaTrap(const NinjaTrap &f2);
 		virtual ~NinjaTrap();
 		NinjaTrap &operator= (const NinjaTrap &frag);
-		void		meleeAttack(std::string const &target);
-		void		rangedAttack(std::string const &target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
-		void		challengeNewcomer(std::string const & target);
-		int			getHitPoints() const;
-		int			getMaxHitPoints() const;
-		int			getEnergyPoints() const;
-		int			getMaxEnergypoints() const;
-		int			getLevel() const;
-		std::string	getName() const;
-		int			getMeleeAttackDamage() const;
-		int			getRangeAttackDamage() const;
-		int			getArmorDamageReduction() const;
-		ninjaShoebox() const;
+		void	ninjaShoebox(ClapTrap &target) const;
+		void	ninjaShoebox(FragTrap &target) const;
+		void	ninjaShoebox(ScavTrap &target) const;
+		void	ninjaShoebox(NinjaTrap &target) const;
 };
 
 #endif

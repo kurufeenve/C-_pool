@@ -2,6 +2,7 @@
 # define CLAPTRAP_HPP
 
 # include <iostream>
+# include <string>
 # include <sys/time.h>
 
 class	ClapTrap
@@ -20,7 +21,9 @@ class	ClapTrap
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string name);
+		ClapTrap(int _hitPoints, int _maxHitPoints, int _energyPoints, int _maxEnergypoints,
+int _level, std::string _name, int _meleeAttackDamage, int _rangeAttackDamage,
+int _armorDamageReduction);
 		ClapTrap(const ClapTrap &f2);
 		virtual ~ClapTrap();
 		ClapTrap &operator= (const ClapTrap &frag);
@@ -37,6 +40,7 @@ class	ClapTrap
 		int			getMeleeAttackDamage() const;
 		int			getRangeAttackDamage() const;
 		int			getArmorDamageReduction() const;
+		int			getTrueDmg() const;
 		void		setHitPoints(int hp);
 		void		setMaxHitPoints(int mhp);
 		void		setEnergyPoints(int ep);
@@ -46,6 +50,7 @@ class	ClapTrap
 		void		setMeleeAttackDamage(int amount);
 		void		setRangeAttackDamage(int amount);
 		void		setArmorDamageReduction(int amount);
+		void		setTrueDmg(int amount);
 };
 
 #endif
