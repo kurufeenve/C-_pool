@@ -1,8 +1,8 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : _hitPoints(100), _maxHitPoints(100), _energyPoints(50), _maxEnergypoints(50),
-_level(1), _name("FR4G-TP assault robot"), _meleeAttackDamage(20), _rangeAttackDamage(15),
-_armorDamageReduction(3)
+ScavTrap::ScavTrap() : ClapTrap( 100, 100, 50, 50,
+1, "FR4G-TP assault robot", _meleeAttackDamage(20), _rangeAttackDamage(15),
+_armorDamageReduction(3))
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
 	return ;
@@ -31,7 +31,7 @@ ScavTrap &ScavTrap::operator= (const ScavTrap &frag)
 {
 	if (this != &frag)
 	{
-		this->_hitPoints = frag.getHitPoints();
+		this->getHitPoints() = frag.getHitPoints();
 		this->_maxHitPoints = frag.getMaxHitPoints();
 		this->_energyPoints = frag.getEnergyPoints();
 		this->_maxEnergypoints = frag.getMaxEnergypoints();
