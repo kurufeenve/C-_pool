@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : _hitPoints(100), _maxHitPoints(100), _energyPoints(50), _maxEnergypoints(50),
+ScavTrap::ScavTrap() : _hitPoints(50), _maxHitPoints(100), _energyPoints(50), _maxEnergypoints(50),
 _level(1), _name("FR4G-TP assault robot"), _meleeAttackDamage(20), _rangeAttackDamage(15),
 _armorDamageReduction(3)
 {

@@ -24,19 +24,19 @@ class	ClapTrap
 		ClapTrap(const ClapTrap &f2);
 		virtual ~ClapTrap();
 		ClapTrap &operator= (const ClapTrap &frag);
-		void		meleeAttack(std::string const &target);
-		void		rangedAttack(std::string const &target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
-		int			getHitPoints() const;
-		int			getMaxHitPoints() const;
-		int			getEnergyPoints() const;
-		int			getMaxEnergypoints() const;
-		int			getLevel() const;
-		std::string	getName() const;
-		int			getMeleeAttackDamage() const;
-		int			getRangeAttackDamage() const;
-		int			getArmorDamageReduction() const;
+		virtual void		meleeAttack(std::string const &target);
+		virtual void		rangedAttack(std::string const &target);
+		virtual void		takeDamage(unsigned int amount);
+		virtual void		beRepaired(unsigned int amount);
+		virtual int			getHitPoints() const;
+		virtual int			getMaxHitPoints() const;
+		virtual int			getEnergyPoints() const;
+		virtual int			getMaxEnergypoints() const;
+		virtual int			getLevel() const;
+		virtual std::string	getName() const;
+		virtual int			getMeleeAttackDamage() const;
+		virtual int			getRangeAttackDamage() const;
+		virtual int			getArmorDamageReduction() const;
 };
 
 #endif
