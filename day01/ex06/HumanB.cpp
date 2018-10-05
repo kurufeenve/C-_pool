@@ -19,7 +19,8 @@ HumanB::HumanB(std::string name)
 
 void	HumanB::attack(void)
 {
-	std::cout << this->_name << "with his" << this->_weapon->getType() << std::endl;
+	if (this->_weapon) // if we do not check this->_weapon in case the weapon is not set we will ge segfault
+		std::cout << this->_name << "with his" << this->_weapon->getType() << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon &wp)
