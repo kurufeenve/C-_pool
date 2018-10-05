@@ -4,7 +4,7 @@
 # include <iostream>
 # include <sys/time.h>
 
-class	ScavTrap
+class	ClapTrap
 {
 	private:
 		int			_hitPoints;
@@ -19,16 +19,15 @@ class	ScavTrap
 		int			_trueDmg;
 
 	public:
-		ScavTrap();
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &f2);
-		~ScavTrap();
-		ScavTrap &operator= (const ScavTrap &frag);
+		ClapTrap();
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &f2);
+		virtual ~ClapTrap();
+		ClapTrap &operator= (const ClapTrap &frag);
 		void		meleeAttack(std::string const &target);
 		void		rangedAttack(std::string const &target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		void		challengeNewcomer(std::string const & target);
 		int			getHitPoints() const;
 		int			getMaxHitPoints() const;
 		int			getEnergyPoints() const;

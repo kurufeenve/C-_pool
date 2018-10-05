@@ -5,7 +5,7 @@ _level(1), _name("FR4G-TP assault robot"), _meleeAttackDamage(30), _rangeAttackD
 _bottleAttackDamage(6), _kneeToBallsAttackDamage(50), _swearAttackDamage(100),
 _headToHeadAttackDamage(15), _rageOfGandiAttackDamage(2147483647), _armorDamageReduction(5)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "FragTrap default constructor called" << std::endl;
 	return ;
 }
 
@@ -14,19 +14,19 @@ _maxEnergypoints(100), _level(1), _name(name), _meleeAttackDamage(30), _rangeAtt
 _bottleAttackDamage(6), _kneeToBallsAttackDamage(50), _swearAttackDamage(100),
 _headToHeadAttackDamage(15), _rageOfGandiAttackDamage(2147483647), _armorDamageReduction(5)
 {
-	std::cout << "String constructor called" << std::endl;
+	std::cout << "FragTrap string constructor called" << std::endl;
 	return ;
 }
 
 FragTrap::FragTrap(const FragTrap &f2)
 {
 	*this = f2;
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "FragTrap copy constructor called" << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "FragTrap destructor called" << std::endl;
 }
 
 FragTrap &FragTrap::operator= (const FragTrap &frag)
@@ -43,7 +43,7 @@ FragTrap &FragTrap::operator= (const FragTrap &frag)
 		this->_rangeAttackDamage = frag.getRangeAttackDamage();
 		this->_armorDamageReduction = frag.getArmorDamageReduction();
 	}
-	std::cout << "Copied" << std::endl;
+	std::cout << "FragTrap copied" << std::endl;
 	return *this;
 }
 
@@ -114,14 +114,14 @@ void		FragTrap::rangedAttack(std::string const &target)
 
 void		FragTrap::takeDamage(unsigned int amount)
 {
-	if (amount < this->_armorDamageReduction)
+	if ((int)amount < this->_armorDamageReduction)
 		this->_trueDmg = 0;
 	else
 	{
-		this->_trueDmg -= this->_armorDamageReduction;
+		this->_trueDmg = amount - this->_armorDamageReduction;
 		std::cout << "'" + this->_name + "' was damaged by " << this->_trueDmg << " points.\n" << std::endl;
 	}
-	if (this->_hitPoints - this->_trueDmg <= 0)
+	if (this->_hitPoints < this->_trueDmg)
 	{
 		std::cout << "'" + this->_name + "' is not functioning! repairs needed!\n" << std::endl;
 		this->_hitPoints = 0;

@@ -3,8 +3,9 @@
 
 # include <iostream>
 # include <sys/time.h>
+# include "ClapTrap.hpp"
 
-class	ScavTrap
+class	ScavTrap : public ClapTrap
 {
 	private:
 		int			_hitPoints;
@@ -22,7 +23,7 @@ class	ScavTrap
 		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &f2);
-		~ScavTrap();
+		virtual ~ScavTrap();
 		ScavTrap &operator= (const ScavTrap &frag);
 		void		meleeAttack(std::string const &target);
 		void		rangedAttack(std::string const &target);
