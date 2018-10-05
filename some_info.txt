@@ -1,0 +1,49 @@
+class myclass{
+	private: 
+		int i;
+		char h;
+		
+	public:
+		myclass();
+		~myclass();
+		void func();
+	protected:
+
+};
+
+void myclass::func(){
+
+}
+
+class newclass : myclass{
+	void nm()
+	{
+		func();
+	}
+};
+
+int		main(int argc, char **argv)
+{
+	int i;
+	myclass gogo();
+	newclass *nc = new newclass();
+	delete(nc);
+}
+
+
+//random
+#include <sys/time.h>
+#include <unistd.h>
+
+struct timeval times;
+gettimeofday(&times,NULL);
+srand((times.tv_sec) + (times.tv_usec));
+usleep(1);
+
+
+Human::Human() : _brain(new Brain()) //in moment of object HUMAN creation
+
+Human::Human() // after of object HUMAN creation
+{
+	this->_brain = new Brain();
+}
