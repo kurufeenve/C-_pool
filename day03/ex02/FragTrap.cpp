@@ -114,14 +114,14 @@ void		FragTrap::rangedAttack(std::string const &target)
 
 void		FragTrap::takeDamage(unsigned int amount)
 {
-	if ((int)amount < this->_armorDamageReduction)
+	if (amount < this->_armorDamageReduction)
 		this->_trueDmg = 0;
 	else
 	{
-		this->_trueDmg = amount - this->_armorDamageReduction;
+		this->_trueDmg -= this->_armorDamageReduction;
 		std::cout << "'" + this->_name + "' was damaged by " << this->_trueDmg << " points.\n" << std::endl;
 	}
-	if (this->_hitPoints < this->_trueDmg)
+	if (this->_hitPoints - this->_trueDmg <= 0)
 	{
 		std::cout << "'" + this->_name + "' is not functioning! repairs needed!\n" << std::endl;
 		this->_hitPoints = 0;

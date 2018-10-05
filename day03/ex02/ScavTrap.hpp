@@ -1,10 +1,10 @@
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include <iostream>
 # include <sys/time.h>
 
-class	FragTrap
+class	ScavTrap
 {
 	private:
 		int			_hitPoints;
@@ -15,30 +15,20 @@ class	FragTrap
 		std::string	_name;
 		int			_meleeAttackDamage;
 		int			_rangeAttackDamage;
-		int			_bottleAttackDamage;
-		int			_kneeToBallsAttackDamage;
-		int			_swearAttackDamage;
-		int			_headToHeadAttackDamage;
-		int			_rageOfGandiAttackDamage;
 		int			_armorDamageReduction;
 		int			_trueDmg;
 
 	public:
-		FragTrap();
-		FragTrap(std::string name);
-		FragTrap(const FragTrap &f2);
-		~FragTrap();
-		FragTrap &operator= (const FragTrap &frag);
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap &f2);
+		~ScavTrap();
+		ScavTrap &operator= (const ScavTrap &frag);
 		void		meleeAttack(std::string const &target);
 		void		rangedAttack(std::string const &target);
-		void		bottleAttack(std::string const &target);
-		void		kneeToBallsAttack(std::string const &target);
-		void		swearAttack(std::string const &target);
-		void		headToHeadAttack(std::string const &target);
-		void		rageOfGandi(std::string const &target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		void		vaulthunter_dot_exe(std::string const & target);
+		void		challengeNewcomer(std::string const & target);
 		int			getHitPoints() const;
 		int			getMaxHitPoints() const;
 		int			getEnergyPoints() const;
