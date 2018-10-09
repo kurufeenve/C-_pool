@@ -11,8 +11,8 @@ Form::Form(const Form &F) : _gradeS(F._gradeS), _gradeExe(F._gradeExe)
 	*this = F;
 }
 
-Form::Form(const std::string name, const int gradeS, const int gradeExe) :
-_name(name), _gradeS(gradeS), _gradeExe(gradeExe)
+Form::Form(const std::string name, const unsigned int gradeS, const unsigned int gradeExe, std::string target) :
+_name(name), _gradeS(gradeS), _gradeExe(gradeExe), _target(target)
 {
 	this->_signed = 0;
 	if (gradeS > 150)
@@ -120,10 +120,25 @@ std::ostream	&operator<< (std::ostream &out, Form const &F)
 	return out;
 }
 
-void	Form::beSigned(Bureaucrat Bu)
+void	Form::beSigned(const Bureaucrat Bu)
 {
 	if (Bu.getGrade() <= this->_gradeS)
 		this->_signed = true;
 	else
 		throw new GradeTooLowException::GradeTooLowException();
+}
+
+void			Form::setSigned(bool sign)
+{
+	this->_signed = sign;
+}
+
+const std::string	Form::getTarget(void) const
+{
+	return this->_target;
+}
+
+void				Form::setTarget(const std::string target)
+{
+	this->_target = target;
 }
