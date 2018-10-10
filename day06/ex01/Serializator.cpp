@@ -58,7 +58,7 @@ void	*Serializator::serialize(void)
 	for (; i < 12; i++)
 	{
 		res[i] = rand() % 256 - 128;
-		this->n.ch[k--] = (unsigned char)res[i];
+		this->n.ch[k--] = static_cast<unsigned char>(res[i]);
 	}
 	for (; i < 20; i++)
 	{
@@ -77,12 +77,12 @@ Data	*Serializator::deserealize(void *raw)
 
 	for (; i < 8; i++)
 	{
-		data->s1 += dat[i];
+		data->s1.push_back(dat[i]);
 	}
 	data->n = this->n.num;
-	for (; i < 20; i++)
+	for (i = 12; i < 20; i++)
 	{
-		data->s2 += dat[i];
+		data->s2.push_back(dat[i]);
 	}
 	return data;
 }
