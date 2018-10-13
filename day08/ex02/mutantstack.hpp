@@ -5,6 +5,7 @@
 # include <iterator>
 # include <exception>
 # include <stack>
+# include <iostream>
 
 template <class T>
 class	MutantStack : public std::stack<T>
@@ -51,9 +52,17 @@ class	MutantStack : public std::stack<T>
 		}
 		void			pop()
 		{
-			if (this->_StackLst->empty())
-				throw std::logic_error("stack is empty");
-			this->_StackLst->pop_front();
+			try
+			{
+				if (this->_StackLst->empty())
+					throw std::logic_error("stack is empty");
+				this->_StackLst->pop_front();
+			}
+			catch (std::logic_error e)
+			{
+				std::cout << e << std::endl;
+			}
+
 		}
 		iterator	begin() const
 		{
